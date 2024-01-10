@@ -3,33 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Current Time</title>
+  <title>Greeting</title>
   <script>
     function updateTime() {
       var currentTime = new Date();
       var hours = currentTime.getHours();
-      var minutes = currentTime.getMinutes();
-      var seconds = currentTime.getSeconds();
 
-      // Add leading zero if needed
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
+      // Display the hour
+      document.getElementById("time").innerHTML = hours;
 
-      var timeString = hours + ":" + minutes + ":" + seconds;
-      document.getElementById("time").innerHTML = timeString;
-
-      // Extract and convert the hour to a different data type
+      // Store the hour as a number
       var hourAsNumber = parseInt(hours, 10);
 
-      // Print the converted hour
-      console.log("Hour as a number: " + hourAsNumber);
+      // Check the condition and update the message
+      var greetingMessage = (hourAsNumber > 21) ? "Hello" : "Goodbye";
+      document.getElementById("greeting").innerHTML = greetingMessage;
     }
 
     setInterval(updateTime, 1000); // Update every second
   </script>
 </head>
 <body>
-  <h1></h1>
-  <p id="time"></p>
+  <h1 id="greeting"></h1>
+  <p>Current Hour: <span id="time"></span></p>
 </body>
 </html>
